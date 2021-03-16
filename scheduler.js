@@ -49,6 +49,17 @@
             })
     })
 
+    const fieldsFactory = (fields) => {
+        let result = []
+        for(const fieldData of fields){
+            const field = document.createElement('input')
+            field.type = 'text'
+            field.name = fieldData
+            result.push(field)
+        }
+        return result
+    }
+
     const generateScheduleBlock = (id) => {
         const css = document.createElement("link")
         css.href = `${id}.css`
@@ -73,10 +84,25 @@
         action.innerText = settings.bookButtonText
         action.addEventListener('click', (e) => {
             e.stopPropagation()
-            alert(new Date(TIME_SELECTOR.value * 1000))
+            const requestData = {
+                timestamp:TIME_SELECTOR.value,
+                name: form.querySelector('input[name=name]').value,
+                email: form.querySelector('input[name=email]').value,
+                phone: form.querySelector('input[name=phone]').value,
+            }
+            console.log(requestData)
+        })
+
+        const form = document.createElement('form')
+        form.action = settings.server + id + '/order/create'
+        fieldsFactory(['name', 'email', 'phone']).forEach(item=>{
+            form.appendChild(item)
         })
 
 
+
+
+        container.appendChild(form)
         container.appendChild(dates)
         container.appendChild(days)
         container.appendChild(action)
