@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заголовок страницы</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div>
+    Для вставки блока записи на свой сайт: <br>
+    <ol>
+        <li>
+            В <code>&lt;head&gt;</code> Вашего сайта добавьте ссылку на общие стили блока
+        </li>
+        <li>
+            В том месте, где Вы хотите вывести расписание, добавьте ссылку в виде <br>
+            <code>
+                &lt;a href="#" data-scheduler="%ID расписания%"&gt;Запись онлайн&lt;/a&gt;
+            </code>
+        </li>
+        <li>в конце страницы добавьте ссылку на js виджет</li>
+    </ol>
+</div>
+<div>
+    <a href="#" data-scheduler="demo">Запись онлайн</a>
+</div>
+
+</body>
+<style>
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<script type="text/javascript" src="scheduler.js"></script>
+</html>
