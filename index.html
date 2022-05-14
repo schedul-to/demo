@@ -21,7 +21,7 @@
     </ol>
 </div>
 <div>
-    <a href="#" data-scheduler="Aim1MQb87SbD2gHs09PSg6hR6Wf2">Запись онлайн</a>
+    <a href="#" data-scheduler="tHlGlqfAgZ1samrEpjWp">Запись онлайн</a>
 </div>
 
 </body>
@@ -37,5 +37,20 @@
     }
 </style>
 
-<script type="text/javascript" src="https://api-vwdwjgjfjq-ew.a.run.app/Aim1MQb87SbD2gHs09PSg6hR6Wf2/widget/script.js"></script>
+<script>
+    const CURRENT_DOMAIN = `https://api-vwdwjgjfjq-ew.a.run.app`
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+        if(params.schedule){
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = `${CURRENT_DOMAIN}/${params.schedule}/widget/script.js`;
+            document.querySelector('a').setAttribute('data-scheduler', params.schedule)
+            document.head.appendChild(script);
+        }
+
+    })
+</script>
 </html>
